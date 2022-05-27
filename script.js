@@ -7,8 +7,9 @@ form.append(p);
 
 userInput.addEventListener("change", (evt) => {
     userInput.value = userInput.value.toUpperCase();
-    if (userInput.value != "ROCK" || userInput.value != "PAPER" || userInput.value != "SCISSORS") {
-        alert("Please enter rock, paper or scissors only!");
+    //console.log(userInput.value);
+    if ((userInput.value != "ROCK") && (userInput.value != "PAPER") && (userInput.value != "SCISSORS")) {
+        alert("Pls enter rock, paper or scissors only!")
         userInput.value = "";
     }
 })
