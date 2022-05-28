@@ -3,8 +3,18 @@ let userInput = document.querySelector("#userInput");
 let computerInput = document.querySelector("#computerInput");
 let h1 = document.querySelector("h1");
 let p = document.createElement('p');
-form.append(p);
+let score = document.createElement('p');
+form.insertAdjacentElement("afterend", score);
+let userScore = 0;
+let computerScore = 0;
 
+const updateScore = () => {
+    score.innerText = `Score is:- ${userScore}:${computerScore}`;
+    // score.append(p);
+}
+
+updateScore();
+score.insertAdjacentElement("afterend", p);
 userInput.addEventListener("change", (evt) => {
     userInput.value = userInput.value.toUpperCase();
     //console.log(userInput.value);
@@ -26,9 +36,16 @@ computerInput.addEventListener("change", () => alert("Nice try cheater!"));
 const findwinner = (u) => {
     computerInput.value = findInput();
     if (u == computerInput.value) p.innerText = "It's a tie";
-    else if (u == 'ROCK' && computerInput.value == "PAPER" || u == 'PAPER' && computerInput.value == "SCISSORS" || u == 'SCISSORS' && computerInput.value == "ROCK") p.innerText = "You Lose :(";
-    else p.innerText = "You Win :)";
-
+    else if (u == 'ROCK' && computerInput.value == "PAPER" || u == 'PAPER' && computerInput.value == "SCISSORS" || u == 'SCISSORS' && computerInput.value == "ROCK") {
+        p.innerText = "You Lose :(";
+        computerScore++;
+        updateScore();
+    }
+    else {
+        userScore++;
+        p.innerText = "You Win :)";
+        updateScore();
+    }
 }
 
 const findInput = () => {
@@ -47,3 +64,4 @@ const findInput = () => {
             break;
     }
 }
+
